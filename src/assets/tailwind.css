@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "BPG-arial";
+  src: url("../fonts/bpg_arial_2009.ttf");
+}
+
+@layer components {
+  .text-shadow-white {
+    text-shadow: 22px 2px 1px rgb(255, 255, 255);
+  }
+
+  .text-shadow-black {
+    text-shadow: 2px 1px 1px rgb(255, 255, 255), 3px 2px 1px rgb(0, 0, 0);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 0 15px 30px rgba(0, 0, 0, 0.11), 0 5px 15px rgba(0, 0, 0, 0.08);
+  }
+
+  .text-shadow-none {
+    text-shadow: none;
+  }
+}
