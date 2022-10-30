@@ -5,6 +5,7 @@
       <input
         type="text"
         id="name"
+        name="name"
         placeholder="იოსებ"
         class="border border-black bg-transparent max-w-[70%] h-10 pl-5 pr-5 mt-2"
       />
@@ -14,6 +15,7 @@
       <input
         type="text"
         id="lastName"
+        name="lastName"
         placeholder="ჯუღაშვილი"
         class="border border-black bg-transparent max-w-[70%] h-10 pl-5 pr-5 mt-2"
       />
@@ -23,6 +25,7 @@
       <input
         type="email"
         id="mail"
+        name="email"
         placeholder="fbi@redberry.ge"
         class="border border-black bg-transparent max-w-[70%] h-10 pl-5 pr-5 mt-2"
       />

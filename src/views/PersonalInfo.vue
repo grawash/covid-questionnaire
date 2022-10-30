@@ -17,14 +17,6 @@
         class="grow-[6] shrink basis-auto w-0"
       />
     </div>
-    <div class="ml-auto mr-auto w-36 flex justify-between">
-      <router-link to="/"
-        ><img src="../assets/Vector 7.svg" alt=""
-      /></router-link>
-      <router-link to="/questionnaire/personal-info"
-        ><img src="../assets/Vector 8.svg" alt=""
-      /></router-link>
-    </div>
   </div>
 </template>
 
@@ -32,5 +24,8 @@
 import PersonalInfoForm from "../components/PersonalInfoForm.vue";
 export default {
   components: { PersonalInfoForm },
+  mounted() {
+    console.log(this.$route.name);
+  },
 };
 </script>

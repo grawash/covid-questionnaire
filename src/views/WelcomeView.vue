@@ -7,7 +7,8 @@
       <router-link
         to="/questionnaire/personal-info"
         class="mt-28 font-extrabold text-3xl text-center wrap hover:text-shadow-black"
-        >კითხვარის <br> დაწყება</router-link
+        >კითხვარის <br />
+        დაწყება</router-link
       >
     </div>
   </div>
