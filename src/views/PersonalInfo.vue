@@ -25,7 +25,7 @@ import PersonalInfoForm from "../components/PersonalInfoForm.vue";
 export default {
   components: { PersonalInfoForm },
   mounted() {
-    console.log(this.$route.name);
+    //console.log(this.$route.name);
   },
 };
 </script>

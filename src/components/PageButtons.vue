@@ -13,18 +13,14 @@
 export default {
   computed: {
     backLink() {
-      if (this.$route.name === "personal-info") {
-        return "/";
-      } else {
-        return "/questionnaire/personal-info";
-      }
+      const pageNames = this.$store.getters.pageNames;
+      let index = pageNames.findIndex((el) => el === this.$route.name);
+      return pageNames[index - 1];
     },
     nextLink() {
-      if (this.$route.name === "personal-info") {
-        return "/questionnaire/covid-status";
-      } else {
-        return "/questionnaire/personal-info";
-      }
+      const pageNames = this.$store.getters.pageNames;
+      let index = pageNames.findIndex((el) => el === this.$route.name);
+      return pageNames[index + 1];
     },
   },
 };
