@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         BPG: ["BPG-arial", "cursive"],
+        anon: ["Anonymous Pro", "monospace"],
       },
     },
   },

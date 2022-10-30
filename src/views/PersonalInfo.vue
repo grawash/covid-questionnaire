@@ -1,5 +1,36 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="flex flex-col">
+    <div class="flex">
+      <div class="grow-[4] shrink basis-auto flex flex-col">
+        <personal-info-form></personal-info-form>
+        <div class="w-fit">
+          <div class="border mt-28 w-4/5 border-black"></div>
+          <p class="pt-5 font-bold text-neutral-500 text-base">
+            *-ით მონიშნული ველების შევსება <br />
+            სავალდებულოა
+          </p>
+        </div>
+      </div>
+      <img
+        src="../assets/scan2.svg"
+        alt=""
+        class="grow-[6] shrink basis-auto w-0"
+      />
+    </div>
+    <div class="ml-auto mr-auto w-36 flex justify-between">
+      <router-link to="/"
+        ><img src="../assets/Vector 7.svg" alt=""
+      /></router-link>
+      <router-link to="/questionnaire/personal-info"
+        ><img src="../assets/Vector 8.svg" alt=""
+      /></router-link>
+    </div>
   </div>
 </template>
+
+<script>
+import PersonalInfoForm from "../components/PersonalInfoForm.vue";
+export default {
+  components: { PersonalInfoForm },
+};
+</script>
