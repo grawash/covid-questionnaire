@@ -12,8 +12,8 @@
         </div>
       </div>
       <img
-        src="../assets/scan2.svg"
-        alt=""
+        src="../components/icons/scan2.svg"
+        alt="boy and girl"
         class="grow-[6] shrink basis-auto w-0"
       />
     </div>
@@ -25,7 +25,9 @@ import PersonalInfoForm from "../components/PersonalInfoForm.vue";
 export default {
   components: { PersonalInfoForm },
   mounted() {
-    //console.log(this.$route.name);
+    console.log(
+      // this.$router.options.routes.forEach((route) => console.log(route.path))
+    );
   },
 };
 </script>

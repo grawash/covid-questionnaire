@@ -7,15 +7,7 @@ import "./assets/tailwind.css";
 
 const store = createStore({
   state() {
-    return {
-      pages: [
-        "/",
-        "personal-info",
-        "covid-status",
-        "vaccinated",
-        "covid-policy",
-      ],
-    };
+    return {};
   },
   getters: {
     pageNames(state) {

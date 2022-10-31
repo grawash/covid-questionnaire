@@ -1,10 +1,10 @@
 <template>
   <div class="ml-auto mr-auto w-36 flex justify-between">
-    <router-link :to="backLink"
-      ><img src="../assets/Vector 7.svg" alt=""
+    <router-link v-if="this.$route.name !== 'personal-info'" :to="previousPage"
+      ><img src="./icons/Vector 7.svg" alt="previous page button"
     /></router-link>
-    <router-link :to="nextLink"
-      ><img src="../assets/Vector 8.svg" alt=""
+    <router-link :to="nextPage" class="ml-auto"
+      ><img src="./icons/Vector 8.svg" alt="next page button"
     /></router-link>
   </div>
 </template>
@@ -12,15 +12,15 @@
 <script>
 export default {
   computed: {
-    backLink() {
-      const pageNames = this.$store.getters.pageNames;
-      let index = pageNames.findIndex((el) => el === this.$route.name);
-      return pageNames[index - 1];
+    previousPage() {
+      const pages = this.$router.options.routes[1].children;
+      let tempindex = pages.findIndex((el) => el.name === this.$route.name);
+      return pages[tempindex - 1].name;
     },
-    nextLink() {
-      const pageNames = this.$store.getters.pageNames;
-      let index = pageNames.findIndex((el) => el === this.$route.name);
-      return pageNames[index + 1];
+    nextPage() {
+      const pages = this.$router.options.routes[1].children;
+      let tempindex = pages.findIndex((el) => el.name === this.$route.name);
+      return pages[tempindex + 1] ? pages[tempindex + 1].name : "";
     },
   },
 };
