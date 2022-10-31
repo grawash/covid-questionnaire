@@ -1,34 +1,31 @@
 <template>
   <form action="">
-    <div class="flex flex-col pt-10">
-      <label for="name" class="font-bold text-xl">სახელი*</label>
-      <input
-        type="text"
-        id="name"
-        name="name"
-        placeholder="იოსებ"
-        class="border border-black bg-transparent max-w-[70%] h-10 pl-5 pr-5 mt-2"
-      />
-    </div>
-    <div class="flex flex-col pt-11">
-      <label for="lastName" class="font-bold text-xl">გვარი*</label>
-      <input
-        type="text"
-        id="lastName"
-        name="lastName"
-        placeholder="ჯუღაშვილი"
-        class="border border-black bg-transparent max-w-[70%] h-10 pl-5 pr-5 mt-2"
-      />
-    </div>
-    <div class="flex flex-col pt-11">
-      <label for="mail" class="font-bold text-xl">მეილი*</label>
-      <input
-        type="email"
-        id="mail"
-        name="email"
-        placeholder="fbi@redberry.ge"
-        class="border border-black bg-transparent max-w-[70%] h-10 pl-5 pr-5 mt-2"
-      />
-    </div>
+    <basic-input
+      inputName="name"
+      inputType="text"
+      inputId="name"
+      inputPlaceholder="იოსებ"
+      inputLabel="სახელი"
+    ></basic-input>
+    <basic-input
+      inputName="lastName"
+      inputType="text"
+      inputId="lastName"
+      inputPlaceholder="ჯუღაშვილი"
+      inputLabel="გვარი"
+    ></basic-input>
+    <basic-input
+      inputName="email"
+      inputType="email"
+      inputId="mail"
+      inputPlaceholder="fbi@redberry.ge"
+      inputLabel="მეილი"
+    ></basic-input>
   </form>
 </template>
+<script>
+import BasicInput from "./BasicInput.vue";
+export default {
+  components: { BasicInput },
+};
+</script>
