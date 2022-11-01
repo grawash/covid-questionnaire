@@ -11,23 +11,16 @@
           </p>
         </div>
       </div>
-      <img
-        src="../components/icons/scan2.svg"
-        alt="boy and girl"
-        class="grow-[6] shrink basis-auto w-0"
-      />
+      <boy-and-girl class="grow-[10] shrink basis-auto w-0 h-auto" />
     </div>
   </div>
 </template>
 
 <script>
-import PersonalInfoForm from "../components/PersonalInfoForm.vue";
+import PersonalInfoForm from "@/components/PersonalInfoForm.vue";
+import BoyAndGirl from "@/components/icons/BoyAndGirl.vue";
 export default {
-  components: { PersonalInfoForm },
-  mounted() {
-    console.log(
-      // this.$router.options.routes.forEach((route) => console.log(route.path))
-    );
-  },
+  components: { PersonalInfoForm, BoyAndGirl },
+  mounted() {},
 };
 </script>

@@ -1,15 +1,15 @@
 <template>
   <div class="flex flex-col pt-10">
-    <label :for="inputId" class="font-bold text-xl">{{ inputLabel }} *</label>
+    <label :for="id" class="font-bold text-xl">{{ label }} *</label>
     <Field
-      :type="inputType"
-      :id="inputId"
-      :name="inputName"
+      :type="type"
+      :id="id"
+      :name="name"
       :rules="rule"
-      :placeholder="inputPlaceholder"
+      :placeholder="placeholder"
       class="border border-black bg-transparent max-w-[70%] h-10 pl-5 pr-5 mt-2"
     />
-    <ErrorMessage :name="inputName" class="text-red-500" />
+    <ErrorMessage :name="name" class="text-red-500" />
   </div>
 </template>
 
@@ -19,12 +19,31 @@ import { Field, ErrorMessage } from "vee-validate";
 export default {
   components: { Field, ErrorMessage },
   props: {
-    inputLabel: String,
-    inputName: String,
-    inputType: String,
-    inputId: String,
-    inputPlaceholder: String,
-    rule: String,
+    label: {
+      type: String,
+      required: true,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    type: {
+      type: String,
+      required: false,
+      default: "text",
+    },
+    id: {
+      type: String,
+      required: true,
+    },
+    placeholder: {
+      type: String,
+      required: false,
+    },
+    rule: {
+      type: String,
+      required: false,
+    },
   },
 };
 </script>

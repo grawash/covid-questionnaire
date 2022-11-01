@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
-import WelcomeView from "../pages/WelcomeView.vue";
-import QuestionnaireTemplate from "../pages/QuestionnaireTemplate.vue";
-import PersonalInfo from "../pages/PersonalInfo.vue"
+import WelcomeView from "@/pages/WelcomeView.vue";
+import QuestionnaireTemplate from "@/pages/QuestionnaireTemplate.vue";
+import PersonalInfo from "@/pages/PersonalInfo.vue"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,18 +14,18 @@ const router = createRouter({
     {
       path: "/questionnaire",
       name: "questionnaire",
-      component: () => QuestionnaireTemplate,
+      component: QuestionnaireTemplate,
       children: [
         {
           name: "personal-info",
           path: "personal-info",
-          component: () => PersonalInfo,
+          component: PersonalInfo,
         },
         {
           name: "covid-status",
           path: "covid-status",
           //temporary component for testing pagination, will change when covid-status page is added
-          component: () => PersonalInfo,
+          component: PersonalInfo,
         },
       ],
     },

@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import TheHeader from "../components/TheHeader.vue";
-import PageButtons from "../components/PageButtons.vue";
+import TheHeader from "@/components/TheHeader.vue";
+import PageButtons from "@/components/PageButtons.vue";
 export default {
   components: { TheHeader, PageButtons },
 };

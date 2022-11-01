@@ -1,20 +1,11 @@
 import { createApp } from "vue";
-import { createStore } from "vuex";
-import App from "./App.vue";
-import router from "./router";
+import App from "@/App.vue";
+import router from "@/router";
+import store from "@/store/index.js";
 
-import "./assets/tailwind.css";
-
-const store = createStore({
-  state() {
-    return {};
-  },
-  getters: {
-    pageNames(state) {
-      return state.pages;
-    },
-  },
-});
+import "@/assets/tailwind.css";
+import "./config/vee-validate/rules";
+import "./config/vee-validate/messages";
 
 const app = createApp(App);
 
