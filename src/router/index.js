@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
-import WelcomeView from "../views/WelcomeView.vue";
+import WelcomeView from "@/pages/WelcomeView.vue";
+import QuestionnaireTemplate from "@/pages/QuestionnaireTemplate.vue";
+import PersonalInfo from "@/pages/PersonalInfo.vue"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -10,20 +12,26 @@ const router = createRouter({
       component: WelcomeView,
     },
     {
-      path: "/personal-info",
-      name: "personal-info",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import("../views/PersonalInfo.vue"),
+      path: "/questionnaire",
+      name: "questionnaire",
+      component: QuestionnaireTemplate,
+      children: [
+        {
+          name: "personal-info",
+          path: "personal-info",
+          component: PersonalInfo,
+        },
+        {
+          name: "covid-status",
+          path: "covid-status",
+          //temporary component for testing pagination, will change when covid-status page is added
+          component: PersonalInfo,
+        },
+      ],
     },
     {
       path: "/about",
       name: "about",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import("../views/AboutView.vue"),
     },
   ],
 });

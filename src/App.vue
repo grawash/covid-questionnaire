@@ -8,4 +8,6 @@ import { RouterView } from "vue-router";
   </main>
 </template>
 
-<style scoped></style>
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital@1&display=swap");
+</style>
