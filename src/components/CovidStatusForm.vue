@@ -39,7 +39,7 @@
         label="კი"
       ></basic-radio>
       <basic-radio
-        @choose="(val) => (hadAntigenTest = val)"
+        @choose="(val) => ((hadAntigenTest = val), (dateContent = ''))"
         name="antibodyTest"
         type="radio"
         id="noTest"
@@ -56,9 +56,12 @@
       <basic-input
         class="pt-0 mt-0"
         name="antigenAmount"
-        type="text"
+        @inputFocus="togglePlaceholder"
+        @inputBlur="togglePlaceholder"
+        @input="changeDateContent"
+        :type="type"
         id="antigenAmount"
-        rule="required|numeric"
+        rule="required"
         placeholder="რიცხვი"
       ></basic-input>
       <basic-input
@@ -92,6 +95,7 @@ import { ErrorMessage } from "vee-validate";
 import { Form } from "vee-validate";
 export default {
   components: {
+    // eslint-disable-next-line vue/no-reserved-component-names
     Form,
     BasicInput,
     BasicRadio,
@@ -100,6 +104,7 @@ export default {
   data() {
     return {
       type: "text",
+      dateContent: "",
       hadCovid: false,
       hadAntigenTest: false,
     };
@@ -111,6 +116,13 @@ export default {
       return pages[tempindex + 1] ? pages[tempindex + 1].name : "";
     },
   },
+  watch: {
+    dateContent(newContent) {
+      if (newContent === "" || newContent === undefined) {
+        this.togglePlaceholder();
+      }
+    },
+  },
   methods: {
     onSubmit(values) {
       console.log(values);
@@ -118,14 +130,17 @@ export default {
       console.log(this.$store.getters.getData);
       this.$router.push(this.nextPageName);
     },
-    // togglePlaceholder() {
-    //   console.log(this.dateInput);
-    //   if (this.type === "text") {
-    //     this.type = "date";
-    //   } else if (this.type === "date") {
-    //     this.type = "text";
-    //   }
-    // },
+    togglePlaceholder() {
+      console.log("hello");
+      if (this.type === "text" || this.dateContent !== "") {
+        this.type = "date";
+      } else if (this.type === "date") {
+        this.type = "text";
+      }
+    },
+    changeDateContent(e) {
+      this.dateContent = e.target.value;
+    },
   },
 };
 </script>

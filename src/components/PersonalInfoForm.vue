@@ -45,6 +45,5 @@ export default {
       this.$router.push(this.nextPageName);
     },
   },
-
 };
 </script>
