@@ -1,27 +1,27 @@
 <template>
-  <div class="flex flex-col pt-10">
-    <label v-if="label" :for="id" class="font-bold text-xl">{{ label }} *</label>
+  <div class="flex pb-5">
     <Field
+      @click="$emit('choose', this.id)"
       :type="type"
       :id="id"
       :name="name"
       :rules="rule"
-      :placeholder="placeholder"
-      class="border border-black bg-transparent max-w-[70%] h-10 pl-5 pr-5 mt-2"
+      :value="id"
+      class="mr-2"
     />
-    <ErrorMessage :name="name" class="text-red-500" />
+    <label :for="id" class="font-normal text-xl">{{ label }}</label>
   </div>
 </template>
 
 <script>
-import { Field, ErrorMessage } from "vee-validate";
+import { Field } from "vee-validate";
 
 export default {
-  components: { Field, ErrorMessage },
+  components: { Field },
   props: {
     label: {
       type: String,
-      required: false,
+      required: true,
     },
     name: {
       type: String,
@@ -35,10 +35,6 @@ export default {
     id: {
       type: String,
       required: true,
-    },
-    placeholder: {
-      type: String,
-      required: false,
     },
     rule: {
       type: String,
