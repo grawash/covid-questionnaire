@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col">
     <div class="flex">
-      <div class="grow-[4] shrink basis-auto flex flex-col">
+      <div class="grow-[3] shrink basis-0 flex flex-col">
         <personal-info-form></personal-info-form>
         <div class="w-fit">
           <div class="border mt-28 w-4/5 border-black"></div>
@@ -11,7 +11,7 @@
           </p>
         </div>
       </div>
-      <boy-and-girl class="grow-[10] shrink basis-auto w-0 h-auto" />
+      <boy-and-girl class="grow-[4] shrink basis-0 w-0 h-auto" />
     </div>
   </div>
 </template>

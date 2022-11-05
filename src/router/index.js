@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import WelcomeView from "@/pages/WelcomeView.vue";
 import QuestionnaireTemplate from "@/pages/QuestionnaireTemplate.vue";
-import PersonalInfo from "@/pages/PersonalInfo.vue"
+import PersonalInfo from "@/pages/PersonalInfo.vue";
+import CovidStatus from "@/pages/CovidStatus.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -25,7 +26,7 @@ const router = createRouter({
           name: "covid-status",
           path: "covid-status",
           //temporary component for testing pagination, will change when covid-status page is added
-          component: PersonalInfo,
+          component: CovidStatus,
         },
       ],
     },

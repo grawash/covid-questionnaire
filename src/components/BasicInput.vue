@@ -1,7 +1,9 @@
 <template>
   <div class="flex flex-col pt-10">
-    <label :for="id" class="font-bold text-xl">{{ label }} *</label>
+    <label v-if="label" :for="id" class="font-bold text-xl">{{ label }} *</label>
     <Field
+      @focus="$emit('inputFocus', this.id)"
+      @blur="$emit('inputBlur', this.id)"
       :type="type"
       :id="id"
       :name="name"
@@ -21,7 +23,7 @@ export default {
   props: {
     label: {
       type: String,
-      required: true,
+      required: false,
     },
     name: {
       type: String,

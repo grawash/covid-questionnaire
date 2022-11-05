@@ -1,5 +1,5 @@
 <template>
-  <Form @submit="onSubmit">
+  <Form :id="this.$route.name" @submit="onSubmit">
     <basic-input
       name="name"
       type="text"
@@ -29,20 +29,21 @@
 <script>
 import BasicInput from "@/components/BasicInput.vue";
 import { Form } from "vee-validate";
-import { setLocale } from "@vee-validate/i18n";
 
 export default {
   components: {
+    // eslint-disable-next-line vue/no-reserved-component-names
     Form,
     BasicInput,
   },
+  inject: ["nextPageName"],
   methods: {
     onSubmit(values) {
       console.log(values);
+      this.$store.commit("storeData", values);
+      console.log(this.$store.getters.getData, this.nextPageName);
+      this.$router.push(this.nextPageName);
     },
-  },
-  mounted() {
-    setLocale("ka");
   },
 };
 </script>
