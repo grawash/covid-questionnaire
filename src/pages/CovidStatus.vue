@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col">
-    <div class="flex">
+    <div class="flex h-[100%]">
       <div class="grow-[3] shrink basis-0 flex flex-col">
         <covid-status-form />
       </div>

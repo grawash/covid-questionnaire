@@ -1,7 +1,7 @@
 <template>
   <Form v-slot="{ values }" :id="this.$route.name" @submit="onSubmit">
     <div>
-      <p class="pt-10 pb-2 font-bold text-xl">გაქვს გადატანილი Covid-19?</p>
+      <p class="pt-10 pb-2 font-bold text-xl">გაქვს გადატანილი Covid-19?*</p>
       <basic-radio
         name="hadCovid"
         type="radio"
