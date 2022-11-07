@@ -140,7 +140,7 @@ export default {
       console.log(values);
       this.$store.commit("storeData", values);
       console.log(this.$store.getters.getData);
-      this.$router.push(this.nextPageName);
+      this.$router.push(this.nextPageName());
     },
     togglePlaceholder() {
       console.log("hello");

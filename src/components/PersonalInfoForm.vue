@@ -39,10 +39,10 @@ export default {
   inject: ["nextPageName"],
   methods: {
     onSubmit(values) {
-      console.log(values);
       this.$store.commit("storeData", values);
-      console.log(this.$store.getters.getData, this.nextPageName);
-      this.$router.push(this.nextPageName);
+      console.log(this.$router.options.routes[1].children);
+      console.log(this.nextPageName);
+      this.$router.push(this.nextPageName());
     },
   },
 };

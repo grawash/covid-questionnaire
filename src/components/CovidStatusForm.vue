@@ -85,10 +85,12 @@
 <script>
 import BasicInput from "@/components/BasicInput.vue";
 import BasicRadio from "@/components/BasicRadio.vue";
+
 import { ErrorMessage } from "vee-validate";
 
 import { Form } from "vee-validate";
 export default {
+  inject: ["nextPageName"],
   components: {
     // eslint-disable-next-line vue/no-reserved-component-names
     Form,
@@ -102,7 +104,6 @@ export default {
       dateContent: "",
     };
   },
-  inject: ["nextPageName"],
   watch: {
     dateContent(newContent) {
       if (newContent === "" || newContent === undefined) {
@@ -112,13 +113,12 @@ export default {
   },
   methods: {
     onSubmit(values) {
-      console.log(values);
       this.$store.commit("storeData", values);
-      console.log(this.$store.getters.getData);
-      this.$router.push(this.nextPageName);
+      console.log(this.$router.options.routes[1].children);
+      console.log(this.nextPageName);
+      this.$router.push(this.nextPageName());
     },
     togglePlaceholder() {
-      console.log("hello");
       if (this.type === "text" || this.dateContent !== "") {
         this.type = "date";
       } else if (this.type === "date") {

@@ -1,11 +1,21 @@
-<template>
-  <div class="flex h-screen bg-neutral-100">
+<template class="bg-neutral-100">
+  <div class="flex h-screen">
     <div
       class="flex relative flex-col h-4/5 ml-auto mr-auto mt-auto mb-auto w-3/4"
     >
       <the-header></the-header>
-      <router-view class="h-[90%]"></router-view>
-      <page-buttons></page-buttons>
+      <div v-if="this.$route.name === 'feedback'" class="overflow-auto">
+        <router-view v-if="this.$route.name === 'feedback'"></router-view>
+        <page-buttons
+          v-if="this.$route.name === 'feedback'"
+          class=""
+        ></page-buttons>
+      </div>
+      <router-view
+        v-if="this.$route.name !== 'feedback'"
+        class="h-[90%]"
+      ></router-view>
+      <page-buttons v-if="this.$route.name !== 'feedback'"></page-buttons>
     </div>
   </div>
 </template>
@@ -17,7 +27,13 @@ import { setLocale } from "@vee-validate/i18n";
 
 export default {
   components: { TheHeader, PageButtons },
-  computed: {
+  data() {
+    return {
+      nextPage: "",
+    };
+  },
+
+  methods: {
     nextPageName() {
       const pages = this.$router.options.routes[1].children;
       let tempindex = pages.findIndex((el) => el.name === this.$route.name);
