@@ -91,7 +91,11 @@
       label="რას ფიქრობ არსებულ გარემოზე: 
 რა მოგწონს, რას დაამატებდი, რას შეცვლიდი?"
     />
-    <button class="bg-cyan-600 text-white p-4 pl-7 pr-7 float-right rounded-full text-lg font-bold mt-14 mb-14">დასრულება</button>
+    <button
+      class="bg-cyan-600 text-white p-4 pl-7 pr-7 float-right rounded-full text-lg font-bold mt-14 mb-14"
+    >
+      დასრულება
+    </button>
   </Form>
 </template>
 <script>
@@ -103,41 +107,15 @@ import { Form } from "vee-validate";
 export default {
   inject: ["nextPageName"],
   components: {
-    // eslint-disable-next-line vue/no-reserved-component-names
     Form,
     BasicRadio,
     BasicTextArea,
     ErrorMessage,
   },
-  data() {
-    return {
-      type: "text",
-      dateContent: "",
-    };
-  },
-  watch: {
-    dateContent(newContent) {
-      if (newContent === "" || newContent === undefined) {
-        this.togglePlaceholder();
-      }
-    },
-  },
   methods: {
     onSubmit(values) {
       this.$store.commit("storeData", values);
-      console.log(this.$router.options.routes[1].children);
-      console.log(this.nextPageName);
       this.$router.push(this.nextPageName());
-    },
-    togglePlaceholder() {
-      if (this.type === "text" || this.dateContent !== "") {
-        this.type = "date";
-      } else if (this.type === "date") {
-        this.type = "text";
-      }
-    },
-    changeDateContent(e) {
-      this.dateContent = e.target.value;
     },
   },
 };

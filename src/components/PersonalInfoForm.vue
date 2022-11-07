@@ -32,7 +32,6 @@ import { Form } from "vee-validate";
 
 export default {
   components: {
-    // eslint-disable-next-line vue/no-reserved-component-names
     Form,
     BasicInput,
   },

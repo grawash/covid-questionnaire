@@ -92,7 +92,6 @@ import { Form } from "vee-validate";
 export default {
   inject: ["nextPageName"],
   components: {
-    // eslint-disable-next-line vue/no-reserved-component-names
     Form,
     BasicInput,
     BasicRadio,
