@@ -1,5 +1,10 @@
 <template>
-  <Form v-slot="{ values }" :id="this.$route.name" @submit="onSubmit">
+  <Form
+    v-slot="{ values }"
+    :id="this.$route.name"
+    @submit="onSubmit"
+    @invalid-submit="onInvalidSubmit"
+  >
     <div>
       <p class="pt-10 pb-2 font-bold text-xl">გაქვს გადატანილი Covid-19?*</p>
       <basic-radio
@@ -113,9 +118,13 @@ export default {
   methods: {
     onSubmit(values) {
       this.$store.commit("storeData", values);
-      console.log(this.$router.options.routes[1].children);
-      console.log(this.nextPageName);
+      this.$store.commit("toggleValidity", true);
       this.$router.push(this.nextPageName());
+    },
+    onInvalidSubmit({ values, errors, results }) {
+      console.log(values);
+      console.log(errors);
+      console.log(results);
     },
     togglePlaceholder() {
       if (this.type === "text" || this.dateContent !== "") {

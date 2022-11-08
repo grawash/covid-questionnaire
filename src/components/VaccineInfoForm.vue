@@ -113,5 +113,8 @@ export default {
       this.$router.push(this.nextPageName());
     },
   },
+  mounted() {
+    console.log(this.$store.getters.getData);
+  },
 };
 </script>

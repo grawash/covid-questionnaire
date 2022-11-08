@@ -1,6 +1,8 @@
 <template>
   <div class="flex flex-col pt-10">
-    <label v-if="label" :for="id" class="font-bold text-xl">{{ label }} *</label>
+    <label v-if="label" :for="id" class="font-bold text-xl"
+      >{{ label }} *</label
+    >
     <Field
       @focus="$emit('inputFocus', this.id)"
       @blur="$emit('inputBlur', this.id)"
@@ -8,6 +10,7 @@
       :id="id"
       :name="name"
       :rules="rule"
+      :value="this.$store.getters.getData[this.name]"
       :placeholder="placeholder"
       class="border border-black bg-transparent max-w-[70%] h-10 pl-5 pr-5 mt-2"
     />

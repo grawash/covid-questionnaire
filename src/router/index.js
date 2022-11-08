@@ -6,8 +6,6 @@ import CovidStatus from "@/pages/CovidStatus.vue";
 import VaccineInfo from "@/pages/VaccineInfo.vue";
 import FeedbackPage from "@/pages/FeedbackPage.vue";
 
-
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
