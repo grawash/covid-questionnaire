@@ -4,6 +4,8 @@ import QuestionnaireTemplate from "@/pages/QuestionnaireTemplate.vue";
 import PersonalInfo from "@/pages/PersonalInfo.vue";
 import CovidStatus from "@/pages/CovidStatus.vue";
 import VaccineInfo from "@/pages/VaccineInfo.vue";
+import FeedbackPage from "@/pages/FeedbackPage.vue";
+
 
 
 const router = createRouter({
@@ -33,6 +35,11 @@ const router = createRouter({
           name: "vaccine-info",
           path: "vaccine-info",
           component: VaccineInfo,
+        },
+        {
+          name: "feedback",
+          path: "feedback",
+          component: FeedbackPage,
         },
       ],
     },

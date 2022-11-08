@@ -3,7 +3,14 @@
     <button v-if="this.$route.name !== 'personal-info'" @click="back">
       <previous-page />
     </button>
-    <button :form="formId" type="submit" class="ml-auto"><next-page /></button>
+    <button
+      v-if="this.$route.name !== 'feedback'"
+      :form="formId"
+      type="submit"
+      class="ml-auto"
+    >
+      <next-page />
+    </button>
   </div>
 </template>
 

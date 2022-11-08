@@ -93,65 +93,24 @@
         </a>
       </p>
     </div>
-    <div v-if="values.antibodyTest === 'noTest'">
-      <p class="pt-10 pb-7 font-bold text-xl">
-        მიუთითე მიახლოებითი პერიოდი (დღე/თვე/წელი) <br />როდის გქონდა Covid-19*
-      </p>
-      <basic-input
-        class="pt-0 mt-0"
-        name="covidDate"
-        type="date"
-        id="covidDate"
-        rule="required"
-      ></basic-input>
-    </div>
   </Form>
 </template>
 <script>
-import BasicInput from "@/components/BasicInput.vue";
 import BasicRadio from "@/components/BasicRadio.vue";
 import { ErrorMessage } from "vee-validate";
 
 import { Form } from "vee-validate";
 export default {
   components: {
-    // eslint-disable-next-line vue/no-reserved-component-names
     Form,
-    BasicInput,
     BasicRadio,
     ErrorMessage,
   },
-  data() {
-    return {
-      type: "text",
-      dateContent: "",
-    };
-  },
   inject: ["nextPageName"],
-  watch: {
-    dateContent(newContent) {
-      if (newContent === "" || newContent === undefined) {
-        this.togglePlaceholder();
-      }
-    },
-  },
   methods: {
     onSubmit(values) {
-      console.log(values);
       this.$store.commit("storeData", values);
-      console.log(this.$store.getters.getData);
-      this.$router.push(this.nextPageName);
-    },
-    togglePlaceholder() {
-      console.log("hello");
-      if (this.type === "text" || this.dateContent !== "") {
-        this.type = "date";
-      } else if (this.type === "date") {
-        this.type = "text";
-      }
-    },
-    changeDateContent(e) {
-      this.dateContent = e.target.value;
+      this.$router.push(this.nextPageName());
     },
   },
 };

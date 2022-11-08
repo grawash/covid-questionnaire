@@ -32,17 +32,16 @@ import { Form } from "vee-validate";
 
 export default {
   components: {
-    // eslint-disable-next-line vue/no-reserved-component-names
     Form,
     BasicInput,
   },
   inject: ["nextPageName"],
   methods: {
     onSubmit(values) {
-      console.log(values);
       this.$store.commit("storeData", values);
-      console.log(this.$store.getters.getData, this.nextPageName);
-      this.$router.push(this.nextPageName);
+      console.log(this.$router.options.routes[1].children);
+      console.log(this.nextPageName);
+      this.$router.push(this.nextPageName());
     },
   },
 };
