@@ -3,46 +3,51 @@
     <div>
       <p class="pt-10 pb-2 font-bold text-xl">უკვე აცრილი ხარ?*</p>
       <basic-radio
-        name="vaccinated"
+        name="had_vaccine"
         type="radio"
-        id="yesVaccine"
+        id="true"
         rule="required"
         label="კი"
       ></basic-radio>
       <basic-radio
-        name="vaccinated"
+        name="had_vaccine"
         type="radio"
-        id="noVaccine"
+        id="false"
         label="არა"
       ></basic-radio>
-      <ErrorMessage name="vaccinated" class="text-red-500" />
+      <ErrorMessage name="had_vaccine" class="text-red-500" />
     </div>
-    <div v-if="values.vaccinated === 'yesVaccine'">
+    <div v-if="values.had_vaccine === 'true'">
       <p class="pt-10 pb-2 font-bold text-xl">აირჩიე რა ეტაპზე ხარ*</p>
       <basic-radio
-        name="vaccinationStage"
+        name="vaccination_stage"
         type="radio"
-        id="oneAndPending"
+        id="first_dosage_and_registered_on_the_second"
         rule="required"
         label="პირველი დოზა და დარეგისტრირებული ვარ მეორეზე"
       ></basic-radio>
       <basic-radio
-        name="vaccinationStage"
+        name="vaccination_stage"
         type="radio"
-        id="fully"
+        id="fully_vaccinated"
         rule="required"
         label="სრულად აცრილი ვარ"
       ></basic-radio>
       <basic-radio
-        name="vaccinationStage"
+        name="vaccination_stage"
         type="radio"
-        id="onlyOne"
+        id="first_dosage_and_not_registered_on_the_second"
         rule="required"
         label="პირველი დოზა და არ დავრეგისტრირებულვარ მეორეზე"
       ></basic-radio>
-      <ErrorMessage name="vaccinationStage" class="text-red-500" />
+      <ErrorMessage name="vaccination_stage" class="text-red-500" />
     </div>
-    <div v-if="values.vaccinationStage === 'onlyOne'">
+    <div
+      v-if="
+        values.vaccination_stage ===
+        'first_dosage_and_not_registered_on_the_second'
+      "
+    >
       <p class="pl-6 pt-9">
         რომ არ გადადო, <br />
         ბარემ ახლავე დარეგისტრირდი
@@ -51,31 +56,31 @@
         </a>
       </p>
     </div>
-    <div v-if="values.vaccinated === 'noVaccine'">
+    <div v-if="values.had_vaccine === 'false'">
       <p class="pt-10 pb-2 font-bold text-xl">რას ელოდები?*</p>
       <basic-radio
-        name="whyWait"
+        name="why_wait"
         type="radio"
-        id="registeredAndWaiting"
+        id="registered_and_waiting"
         rule="required"
         label="დარეგისტრირებული ვარ და ველოდები რიცხვს"
       ></basic-radio>
       <basic-radio
-        name="whyWait"
+        name="why_wait"
         type="radio"
-        id="notPlanning"
+        id="not_planning"
         rule="required"
         label="არ ვგეგმავ"
       ></basic-radio>
       <basic-radio
-        name="whyWait"
+        name="why_wait"
         type="radio"
-        id="hadcovidAndPlanning"
+        id="had_covid_and_planning"
         rule="required"
         label="გადატანილი მაქვს და ვგეგმავ აცრას"
       ></basic-radio>
     </div>
-    <div v-if="values.whyWait === 'notPlanning'">
+    <div v-if="values.why_wait === 'not_planning'">
       <p class="pl-6 pt-9">
         👉
         <a href="https://booking.moh.gov.ge/" class="text-blue-700">
@@ -83,7 +88,7 @@
         </a>
       </p>
     </div>
-    <div v-if="values.whyWait === 'hadcovidAndPlanning'">
+    <div v-if="values.why_wait === 'had_covid_and_planning'">
       <p class="pl-6 pt-9">
         ახალი პროტოკოლით კოვიდის გადატანიდან 1 თვის შემდეგ შეგიძლიათ ვაქცინის
         გაკეთება. <br /><br />

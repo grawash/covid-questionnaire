@@ -12,7 +12,7 @@
         </p>
         <feedback-form />
       </div>
-      <vaccine-doctor
+      <bike-man
         class="grow-[4] shrink basis-0 w-0 h-[680px] self-start top-0 sticky"
       />
     </div>
@@ -20,10 +20,10 @@
 </template>
 
 <script>
-import VaccineDoctor from "@/components/icons/VaccineDoctor.vue";
+import BikeMan from "@/components/icons/BikeMan.vue";
 import FeedbackForm from "@/components/FeedbackForm.vue";
 export default {
-  components: { FeedbackForm, VaccineDoctor },
+  components: { FeedbackForm, BikeMan },
   mounted() {},
 };
 </script>

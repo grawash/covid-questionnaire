@@ -1,11 +1,11 @@
 <template>
   <div class="flex pb-5">
     <Field
-      @click="$emit('choose', this.id)"
-      :type="type"
+      type="radio"
       :id="id"
       :name="name"
       :rules="rule"
+      v-model="checked"
       :value="id"
       class="mr-2"
     />
@@ -40,6 +40,11 @@ export default {
       type: String,
       required: false,
     },
+  },
+  data() {
+    return {
+      checked: this.$store.getters.getData[this.name],
+    };
   },
 };
 </script>
