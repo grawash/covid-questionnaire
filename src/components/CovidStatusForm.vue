@@ -8,80 +8,80 @@
     <div>
       <p class="pt-10 pb-2 font-bold text-xl">გაქვს გადატანილი Covid-19?*</p>
       <basic-radio
-        name="hadCovid"
+        name="had_covid"
         type="radio"
-        id="yesCovid"
+        id="yes"
         rule="required"
         label="კი"
       ></basic-radio>
       <basic-radio
-        name="hadCovid"
+        name="had_covid"
         type="radio"
-        id="noCovid"
+        id="no"
         label="არა"
       ></basic-radio>
       <basic-radio
-        name="hadCovid"
+        name="had_covid"
         type="radio"
         id="now"
         label="ახლა მაქვს"
       ></basic-radio>
-      <ErrorMessage name="hadCovid" class="text-red-500" />
+      <ErrorMessage name="had_covid" class="text-red-500" />
     </div>
-    <div v-if="values.hadCovid">
+    <div v-if="values.had_covid">
       <p class="pt-10 pb-2 font-bold text-xl">
         ანტისხეულების ტესტი გაქვს გაკეთებული?*
       </p>
       <basic-radio
-        name="antibodyTest"
+        name="had_antibody_test"
         type="radio"
-        id="yesTest"
+        id="true"
         rule="required"
         label="კი"
       ></basic-radio>
       <basic-radio
-        name="antibodyTest"
+        name="had_antibody_test"
         type="radio"
-        id="noTest"
+        id="false"
         rule="required"
         label="არა"
       ></basic-radio>
-      <ErrorMessage name="antibodyTest" class="text-red-500" />
+      <ErrorMessage name="had_antibody_test" class="text-red-500" />
     </div>
-    <div v-if="values.antibodyTest === 'yesTest'">
+    <div v-if="values.had_antibody_test === 'true'">
       <p class="pt-10 pb-7 font-bold text-xl">
         თუ გახსოვს, გთხოვ მიუთითე ტესტის მიახლოებითი <br />
         რიცხვი და ანტისხეულების რაოდენობა*
       </p>
       <basic-input
         class="pt-0 mt-0"
-        name="antigenAmount"
+        name="test_date"
         @inputFocus="togglePlaceholder"
         @inputBlur="togglePlaceholder"
         @input="changeDateContent"
         :type="type"
-        id="antigenAmount"
+        id="test_date"
         rule="required"
         placeholder="რიცხვი"
       ></basic-input>
       <basic-input
         class="pt-0 mt-0"
-        name="antibodyCount"
+        name="number"
         type="text"
-        id="antibodyCount"
+        id="number"
         rule="required|numeric"
         placeholder="ანტისხეულების რაოდენობა"
       ></basic-input>
     </div>
-    <div v-if="values.antibodyTest === 'noTest'">
+    <div v-if="values.had_antibody_test === 'false'">
       <p class="pt-10 pb-7 font-bold text-xl">
         მიუთითე მიახლოებითი პერიოდი (დღე/თვე/წელი) <br />როდის გქონდა Covid-19*
       </p>
       <basic-input
         class="pt-0 mt-0"
-        name="covidDate"
+        name="covid_date"
         type="date"
-        id="covidDate"
+        id="covid_date"
         rule="required"
       ></basic-input>
     </div>
@@ -106,6 +106,7 @@ export default {
     return {
       type: "text",
       dateContent: "",
+      date: {},
     };
   },
   watch: {
@@ -117,8 +118,19 @@ export default {
   },
   methods: {
     onSubmit(values) {
-      this.$store.commit("storeData", values);
-      this.$store.commit("toggleValidity", true);
+      if (values.test_date) {
+        this.date = {
+          had_covid: values.had_covid,
+          had_antibody_test: values.had_antibody_test,
+          antibodies: {
+            test_date: values.test_date,
+            Number: values.number,
+          },
+        };
+        this.$store.commit("storeData", this.date);
+      } else {
+        this.$store.commit("storeData", values);
+      }
       this.$router.push(this.nextPageName());
     },
     onInvalidSubmit({ values, errors, results }) {
