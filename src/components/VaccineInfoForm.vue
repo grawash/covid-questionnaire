@@ -1,5 +1,7 @@
 <template>
-  <Form v-slot="{ values }" :id="this.$route.name" @submit="onSubmit">
+  <Form v-slot="{ values, meta }" :id="this.$route.name" @submit="onSubmit">
+    <span v-if="meta.valid" class="hidden">{{ (this.validity = true) }}</span>
+    <span v-else class="hidden"> {{ (this.validity = false) }}</span>
     <div>
       <p class="pt-10 pb-2 font-bold text-xl">უკვე აცრილი ხარ?*</p>
       <basic-radio
@@ -112,8 +114,21 @@ export default {
     ErrorMessage,
   },
   inject: ["nextPageName"],
+  data() {
+    return {
+      validity: false,
+    };
+  },
+  watch: {
+    validity() {
+      this.$store.commit("toggleValidity", this.validity);
+    },
+  },
   methods: {
     onSubmit(values) {
+      values.had_vaccine === "true"
+        ? (values.had_vaccine = true)
+        : (values.had_vaccine = false);
       this.$store.commit("storeData", values);
       this.$router.push(this.nextPageName());
     },

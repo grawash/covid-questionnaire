@@ -41,10 +41,14 @@ export default {
       required: false,
     },
   },
-  data() {
-    return {
-      checked: this.$store.getters.getData[this.name],
-    };
+  computed: {
+    checked() {
+      if (typeof this.$store.getters.getData[this.name] !== "string") {
+        return JSON.stringify(this.$store.getters.getData[this.name]);
+      } else {
+        return this.$store.getters.getData[this.name];
+      }
+    },
   },
 };
 </script>

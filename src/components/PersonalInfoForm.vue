@@ -1,5 +1,7 @@
 <template>
-  <Form :id="this.$route.name" @submit="onSubmit">
+  <Form :id="this.$route.name" @submit="onSubmit" v-slot="{ meta }">
+    <span v-if="meta.valid" class="hidden">{{ (this.validity = true) }}</span>
+    <span v-else class="hidden"> {{ (this.validity = false) }}</span>
     <basic-input
       name="first_name"
       type="text"
@@ -36,9 +38,20 @@ export default {
     BasicInput,
   },
   inject: ["nextPageName"],
+  data() {
+    return {
+      validity: false,
+    };
+  },
+  watch: {
+    validity() {
+      this.$store.commit("toggleValidity", this.validity);
+    },
+  },
   methods: {
     onSubmit(values) {
       this.$store.commit("storeData", values);
+      this.$store.commit("toggleValidity", false);
       this.$router.push(this.nextPageName());
     },
   },

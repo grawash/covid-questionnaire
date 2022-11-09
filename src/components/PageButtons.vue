@@ -9,7 +9,7 @@
       type="submit"
       class="ml-auto"
     >
-      <next-page />
+      <next-page :class="{ dim: isvalid }" />
     </button>
   </div>
 </template>
@@ -20,6 +20,13 @@ import PreviousPage from "@/components/icons/PreviousPage.vue";
 export default {
   components: { nextPage, PreviousPage },
   computed: {
+    isvalid() {
+      if (this.$store.getters.getValidity == true) {
+        return false;
+      } else {
+        return true;
+      }
+    },
     previousPageName() {
       const pages = this.$router.options.routes[1].children;
       let tempindex = pages.findIndex((el) => el.name === this.$route.name);

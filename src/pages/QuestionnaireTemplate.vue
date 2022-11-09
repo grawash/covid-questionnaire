@@ -50,3 +50,9 @@ export default {
   },
 };
 </script>
+<style>
+.dim {
+  filter: brightness(50%);
+  opacity: 50%;
+}
+</style>

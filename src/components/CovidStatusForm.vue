@@ -1,10 +1,9 @@
 <template>
-  <Form
-    v-slot="{ values }"
-    :id="this.$route.name"
-    @submit="onSubmit"
-    @invalid-submit="onInvalidSubmit"
-  >
+  <Form v-slot="{ values, meta }" :id="this.$route.name" @submit="onSubmit">
+    <span v-if="meta.valid" class="hidden">{{
+      (this.validity = true)
+    }}</span>
+    <span v-else class="hidden"> {{ (this.validity = false) }}</span>
     <div>
       <p class="pt-10 pb-2 font-bold text-xl">გაქვს გადატანილი Covid-19?*</p>
       <basic-radio
@@ -28,7 +27,7 @@
       ></basic-radio>
       <ErrorMessage name="had_covid" class="text-red-500" />
     </div>
-    <div v-if="values.had_covid">
+    <div v-if="values.had_covid == 'yes'">
       <p class="pt-10 pb-2 font-bold text-xl">
         ანტისხეულების ტესტი გაქვს გაკეთებული?*
       </p>
@@ -107,6 +106,7 @@ export default {
       type: "text",
       dateContent: "",
       date: {},
+      validity: false,
     };
   },
   watch: {
@@ -115,28 +115,33 @@ export default {
         this.togglePlaceholder();
       }
     },
+    validity() {
+      this.$store.commit("toggleValidity", this.validity);
+    },
   },
   methods: {
     onSubmit(values) {
+      if (values.number) {
+        values.number = Number(values.number);
+      }
+      values.had_antibody_test === "true"
+        ? (values.had_antibody_test = true)
+        : (values.had_antibody_test = false);
       if (values.test_date) {
         this.date = {
           had_covid: values.had_covid,
           had_antibody_test: values.had_antibody_test,
           antibodies: {
             test_date: values.test_date,
-            Number: values.number,
+            number: values.number,
           },
         };
         this.$store.commit("storeData", this.date);
       } else {
         this.$store.commit("storeData", values);
       }
+      this.$store.commit("toggleValidity", false);
       this.$router.push(this.nextPageName());
-    },
-    onInvalidSubmit({ values, errors, results }) {
-      console.log(values);
-      console.log(errors);
-      console.log(results);
     },
     togglePlaceholder() {
       if (this.type === "text" || this.dateContent !== "") {
