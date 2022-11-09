@@ -114,6 +114,9 @@ export default {
   },
   methods: {
     onSubmit(values) {
+      values.number_of_days_from_office = Number(
+        values.number_of_days_from_office
+      );
       this.$store.commit("storeData", values);
       this.$router.push("/thank-you");
     },

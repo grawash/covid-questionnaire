@@ -4,7 +4,9 @@
       <big-star v-if="stars" class="translate-x-20 -translate-y-20" />
     </transition>
     <transition name="para">
-      <p v-if="thanks" class="font-bold text-[64px] text-white tracking-widest">მადლობა</p>
+      <p v-if="thanks" class="font-bold text-[64px] text-white tracking-widest">
+        მადლობა
+      </p>
     </transition>
     <transition name="smallStar">
       <small-star v-if="stars" class="-translate-x-16 translate-y-16" />
@@ -14,6 +16,7 @@
 <script>
 import BigStar from "@/components/icons/BigStar.vue";
 import SmallStar from "@/components/icons/SmallStar.vue";
+import axios from "axios";
 
 export default {
   components: { BigStar, SmallStar },
@@ -31,14 +34,20 @@ export default {
     setTimeout(() => {
       this.stars = true;
     }, "1200");
-
-    fetch("https://covid19.devtest.ge/api/create", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(this.data),
-    }).then((response) => console.log(response));
+    axios
+      .post(
+        "https://covid19.devtest.ge/api/create",
+        {
+          ...this.data,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((response) => console.log(response));
+    console.log({ ...this.data });
   },
 };
 </script>
