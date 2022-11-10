@@ -10,7 +10,7 @@
       :id="id"
       :name="name"
       :rules="rule"
-      :value="this.$store.getters.getData[this.name]"
+      :value="value"
       :placeholder="placeholder"
       class="border border-black bg-transparent max-w-[70%] h-10 pl-5 pr-5 mt-2"
     />
@@ -48,6 +48,17 @@ export default {
     rule: {
       type: String,
       required: false,
+    },
+  },
+  computed: {
+    value() {
+      if (this.name === "test_date" || this.name === "number") {
+        if (this.$store.getters.getData["antibodies"]) {
+          return this.$store.getters.getData["antibodies"][this.name];
+        } else return "";
+      } else {
+        return this.$store.getters.getData[this.name];
+      }
     },
   },
 };

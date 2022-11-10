@@ -1,8 +1,6 @@
 <template>
   <Form v-slot="{ values, meta }" :id="this.$route.name" @submit="onSubmit">
-    <span v-if="meta.valid" class="hidden">{{
-      (this.validity = true)
-    }}</span>
+    <span v-if="meta.valid" class="hidden">{{ (this.validity = true) }}</span>
     <span v-else class="hidden"> {{ (this.validity = false) }}</span>
     <div>
       <p class="pt-10 pb-2 font-bold text-xl">გაქვს გადატანილი Covid-19?*</p>
