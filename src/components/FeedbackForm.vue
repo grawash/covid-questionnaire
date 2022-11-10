@@ -21,13 +21,13 @@
       <basic-radio
         name="non_formal_meetings"
         type="radio"
-        id="once_a_two_week"
+        id="once_in_a_two_weeks"
         label="ორ კვირაში ერთხელ"
       ></basic-radio>
       <basic-radio
         name="non_formal_meetings"
         type="radio"
-        id="once_a_month"
+        id="once_in_a_month"
         label="თვეში ერთხელ"
       ></basic-radio>
       <ErrorMessage name="non_formal_meetings" class="text-red-500" />

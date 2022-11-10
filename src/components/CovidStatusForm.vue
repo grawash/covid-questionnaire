@@ -20,7 +20,7 @@
       <basic-radio
         name="had_covid"
         type="radio"
-        id="now"
+        id="have_right_now"
         label="ახლა მაქვს"
       ></basic-radio>
       <ErrorMessage name="had_covid" class="text-red-500" />
@@ -76,7 +76,7 @@
       </p>
       <basic-input
         class="pt-0 mt-0"
-        name="covid_date"
+        name="covid_sickness_date"
         type="date"
         id="covid_date"
         rule="required"
@@ -118,9 +118,26 @@ export default {
     },
   },
   methods: {
+    format(inputDate) {
+      inputDate = new Date(inputDate);
+      let date, month, year;
+
+      date = inputDate.getDate();
+      month = inputDate.getMonth() + 1;
+      year = inputDate.getFullYear();
+
+      date = date.toString().padStart(2, "0");
+
+      month = month.toString().padStart(2, "0");
+
+      return `${date}/${month}/${year}`;
+    },
     onSubmit(values) {
       if (values.number) {
         values.number = Number(values.number);
+      }
+      if (values.covid_sickness_date) {
+        values.covid_sickness_date = this.format(values.covid_sickness_date);
       }
       values.had_antibody_test === "true"
         ? (values.had_antibody_test = true)

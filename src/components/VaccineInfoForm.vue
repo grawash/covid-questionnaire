@@ -38,17 +38,14 @@
       <basic-radio
         name="vaccination_stage"
         type="radio"
-        id="first_dosage_and_not_registered_on_the_second"
+        id="first_dosage_and_not_registered_yet"
         rule="required"
         label="პირველი დოზა და არ დავრეგისტრირებულვარ მეორეზე"
       ></basic-radio>
       <ErrorMessage name="vaccination_stage" class="text-red-500" />
     </div>
     <div
-      v-if="
-        values.vaccination_stage ===
-        'first_dosage_and_not_registered_on_the_second'
-      "
+      v-if="values.vaccination_stage === 'first_dosage_and_not_registered_yet'"
     >
       <p class="pl-6 pt-9">
         რომ არ გადადო, <br />
@@ -61,28 +58,29 @@
     <div v-if="values.had_vaccine === 'false'">
       <p class="pt-10 pb-2 font-bold text-xl">რას ელოდები?*</p>
       <basic-radio
-        name="why_wait"
+        name="i_am_waiting"
         type="radio"
         id="registered_and_waiting"
         rule="required"
         label="დარეგისტრირებული ვარ და ველოდები რიცხვს"
       ></basic-radio>
       <basic-radio
-        name="why_wait"
+        name="i_am_waiting"
         type="radio"
         id="not_planning"
         rule="required"
         label="არ ვგეგმავ"
       ></basic-radio>
       <basic-radio
-        name="why_wait"
+        name="i_am_waiting"
         type="radio"
-        id="had_covid_and_planning"
+        id="had_covid_and_planning_to_be_vaccinated"
         rule="required"
         label="გადატანილი მაქვს და ვგეგმავ აცრას"
       ></basic-radio>
+      <ErrorMessage name="i_am_waiting" class="text-red-500" />
     </div>
-    <div v-if="values.why_wait === 'not_planning'">
+    <div v-if="values.i_am_waiting === 'not_planning'">
       <p class="pl-6 pt-9">
         👉
         <a href="https://booking.moh.gov.ge/" class="text-blue-700">
@@ -90,7 +88,9 @@
         </a>
       </p>
     </div>
-    <div v-if="values.why_wait === 'had_covid_and_planning'">
+    <div
+      v-if="values.i_am_waiting === 'had_covid_and_planning_to_be_vaccinated'"
+    >
       <p class="pl-6 pt-9">
         ახალი პროტოკოლით კოვიდის გადატანიდან 1 თვის შემდეგ შეგიძლიათ ვაქცინის
         გაკეთება. <br /><br />
