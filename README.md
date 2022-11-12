@@ -1,6 +1,19 @@
 # covid-questionnaire
 
-This template should help get you started developing with Vue 3 in Vite.
+covid-questionnaire is a project which helps us better understand what are the views of new employees about covid-situation and how can we improve current covid-policy.
+
+questionnaire consists of 6 pages:
+1. landing page
+2. personal information
+3. covid-status of the developer
+4. are you vaccinated ?
+5. desirable covid-policy in company
+6. thank-you page
+
+## Prerequisites
+
+* *Vue.JS@3 and up*
+* *npm@6 and up*
 
 ## Recommended IDE Setup
 
